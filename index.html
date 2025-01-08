@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                 document.getElementById('activity-2').style.display = 'none';
+                  document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M22</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para explorar cómo añadir propiedades y mostrar su disponibilidad.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a profundizar en Bubble, aprendiendo a añadir propiedades y cómo mostrar únicamente aquellas que están disponibles en nuestra app. ¡Prepárense para construir una app de hosting realmente funcional!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo se sienten hoy. Si están listos para crear propiedades, levanten su mano derecha. Si necesitan un poco más de energía, cierren los ojos y respiren profundamente tres veces."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos fundamentales: 1. Aprender a crear una funcionalidad que permita a los hosts añadir propiedades. 2. Conocer cómo configurar filtros para mostrar solo alojamientos disponibles. 3. Integrar estas funcionalidades en nuestra aplicación de hosting."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Explorar una herramienta que ayuda a organizar información para apps de renta.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy les presento Airtable, una herramienta que permite organizar la información de manera flexible y similar a una hoja de cálculo, pero con la potencia de una base de datos. Veremos cómo esto puede simplificar la gestión de información para aplicaciones de renta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Airtable".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Airtable nos permite crear tablas, añadir campos de diferentes tipos, relacionar la información entre ellas y visualizar los datos de manera clara y sencilla. Además, Airtable cuenta con diferentes vistas, como calendarios, listas y galerías, lo cual la hace ideal para manejar información de alquiler de propiedades. Observen cómo la flexibilidad de esta herramienta nos permite organizar datos de manera eficiente."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Airtable".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Airtable nos muestra cómo la organización de datos es crucial para una app funcional. Aunque en Bubble haremos el proceso directo, comprender cómo se gestionan los datos con herramientas como Airtable es fundamental para crear aplicaciones efectivas en nuestra app de hosting."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Corte por extensión --------------------------------------------------------- -->
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 22 minutos</div>
+        <div class="subtitle">Aprender a implementar funciones de alojamiento en Bubble.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción a la Creación de Propiedades".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a implementar funciones que permitirán a los usuarios de tipo host añadir propiedades a nuestra app. Aprenderemos a crear interfaces de usuario para la captura de datos, gestionar la información de nuevas propiedades en la base de datos, y mostrar esta información de manera clara y accesible. Este es un paso esencial para convertir nuestra app en una plataforma de alojamiento completa. Así que, ¡prepárense para diseñar una interfaz que simplifique la adición de propiedades!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Diseño de la Interfaz de Adición de Propiedades".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "El primer paso es diseñar la interfaz que los hosts utilizarán para añadir sus propiedades. Necesitaremos una nueva página en nuestra app con un formulario que contenga campos para ingresar la información de la propiedad. Utilizaremos inputs de texto para el nombre de la propiedad, la descripción, el precio y la ubicación. También podemos usar un cargador de imágenes para permitir a los usuarios añadir fotos del lugar. La idea es crear un diseño claro y amigable, que guíe a los usuarios a completar los campos de manera intuitiva. Tomen nota, la apariencia es fundamental, y en esta clase veremos la combinación del diseño, lógica y funcionalidad."</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Inputs de Texto para la Información".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro del formulario, vamos a utilizar diferentes tipos de inputs de texto para cada campo de información. Usaremos inputs estándar para el nombre de la propiedad y el precio por noche, y un input multilínea para la descripción, permitiendo a los usuarios escribir un texto extenso. También añadiremos un cargador de imágenes para que los usuarios añadan fotos de la propiedad. Asegúrense de que cada input tenga una etiqueta clara y concisa, y que el diseño general sea limpio y ordenado. De esta manera, los hosts podrán ingresar toda la información sin complicaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1.5 minutos):</strong> Proyectar Diapositiva 12 "Botón para Registrar Propiedad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para terminar el formulario, vamos a añadir un botón con el texto ‘Listar Propiedad’.  Este botón será el que los hosts usarán para enviar la información de la propiedad a la base de datos. El botón deberá tener un diseño claro y visible, y deberá estar ubicado en un lugar intuitivo del formulario.  Este botón es fundamental, pues será la acción que desencadenará la lógica para el guardado de la nueva propiedad en nuestra app, así que debemos asegurarnos de que cumpla con su función."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Creando el Flujo de Trabajo (Workflow)".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya tenemos la interfaz, vamos a definir qué ocurre cuando el usuario hace clic en el botón ‘Listar Propiedad’. Para ello, iremos a la pestaña 'Workflow'.  Aquí crearemos un nuevo flujo de trabajo que se activará cuando se haga clic en el botón. Dentro de este workflow, añadiremos la acción de crear un nuevo elemento en la base de datos, en la tabla correspondiente a las propiedades. En este paso, conectaremos la interfaz con la base de datos, guardando la información ingresada por el usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "Guardando los Datos de la Propiedad".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro del workflow de creación de la propiedad, debemos indicar qué información de los inputs de texto se va a guardar en cada campo de la tabla correspondiente.  Por ejemplo, el texto que el usuario ingrese en el campo ‘Nombre de la Propiedad’ se guardará en el campo ‘Nombre’ de la tabla de propiedades. De manera similar, haremos con la descripción, el precio y las fotos de la propiedad. Asegúrense de que cada campo de la tabla esté correctamente conectado a su input correspondiente. Con este paso, la información que ingrese el usuario será guardada correctamente en nuestra base de datos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (2 minutos):</strong> Proyectar Diapositiva 15 "Mostrando las Propiedades Disponibles".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez que los hosts empiecen a listar sus propiedades, necesitamos una forma de mostrarlas a los usuarios que buscan alojamiento. Para ello, en la página principal de nuestra app, usaremos un componente llamado 'Repeating Group' o Grupo Repetidor. Los 'Repeating Groups' nos permiten mostrar listas dinámicas de información obtenida de nuestra base de datos, mostrando cada propiedad en un elemento individual.  Este componente es fundamental para mostrar la disponibilidad de las propiedades en nuestra app."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Configurando el Repeating Group".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "En el 'Repeating Group', vamos a configurar su fuente de datos, indicándole a Bubble que debe mostrar todos los elementos de la tabla de propiedades. Esto hará que todos los elementos que estén dentro de esa tabla se muestren como una lista en la interfaz. Después, dentro del 'Repeating Group', añadiremos elementos para mostrar la información de cada propiedad, como la foto, el nombre y el precio, utilizando texto dinámico para que cambie con cada propiedad. Al hacer esto, lograremos una lista de propiedades que se actualice automáticamente, pues tomará la información de la base de datos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Añadiendo Filtros para Propiedades Disponibles".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para mostrar únicamente las propiedades que están disponibles, vamos a añadir filtros al 'Repeating Group'. Los filtros nos permiten restringir la información mostrada de acuerdo con ciertas condiciones. Por ejemplo, podemos añadir un filtro para mostrar únicamente las propiedades que tengan un estado ‘disponible’, o las propiedades que no hayan sido reservadas en las fechas de búsqueda del usuario. La utilización de filtros nos permite hacer más dinámica y funcional nuestra aplicación, mostrando a los usuarios únicamente lo que necesitan."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Tipos de Filtros".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Podemos aplicar distintos tipos de filtros en nuestra app. Por ejemplo, podemos usar un filtro de disponibilidad que sólo muestra propiedades que tengan su estado en ‘disponible’ y que no tengan reservas activas en las fechas de búsqueda del usuario. También podemos usar filtros para el precio, la ubicación, el número de habitaciones y otras características de la propiedad. La combinación de estos filtros nos permite a los usuarios buscar exactamente lo que están buscando, optimizando la experiencia de usuario."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 11 (2 minutos):</strong> Proyectar Diapositiva 19 "Visualizando la Disponibilidad".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para que los usuarios sepan con claridad si una propiedad está disponible o no, podemos usar elementos visuales que indiquen el estado de la propiedad.  Por ejemplo, podemos mostrar un mensaje en rojo que diga ‘No Disponible’ o un botón en verde que diga ‘Reservar Ahora’. Al añadir estos indicadores, hacemos que la información sea más clara y comprensible para los usuarios. Recuerden, una interfaz clara e intuitiva siempre será fundamental para el éxito de nuestra app."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Consideraciones de Escalabilidad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es importante diseñar nuestra base de datos y funcionalidades pensando en el futuro. Consideren cómo la app gestionará un gran número de propiedades y cómo se pueden añadir nuevas características sin comprometer el rendimiento. Bubble está diseñado para escalar con nuestros proyectos, así que si planeamos con cuidado, nuestra aplicación será capaz de crecer sin problemas. Siempre piensen en el largo plazo al planificar las funciones de su app."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minute):</strong> Proyectar Diapositiva 21 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hagamos una pausa para revisar lo que hemos logrado hasta ahora. Hemos aprendido a crear una interfaz para la adición de propiedades, a usar workflows para guardar la información en la base de datos, y a usar repeating groups para mostrar la información filtrada. Hemos cubierto muchos objetivos en esta sesión y estamos listos para continuar en la implementación práctica. ¡Felicidades por su progreso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤸 Actividad 4: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Recargar energías con un breve estiramiento de gato.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Estiramiento de Gato".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a relajar nuestros músculos con un estiramiento de gato. Inclinense hacia adelante y arqueen su espalda como un gato, estirando los brazos hacia adelante. Repitan el movimiento durante 30 segundos."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Cronómetro - 30 Segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Beneficios del Estiramiento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Este estiramiento nos ayuda a relajar los músculos y reducir la tensión, mejorando nuestra flexibilidad y preparándonos para continuar con nuestro reto de hoy. ¡Estamos listos para seguir adelante!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+         <div class="subtitle">Organizar los equipos y el material para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, por favor reúnanse con los mismos equipos que han estado trabajando en las misiones anteriores. La colaboración es clave para construir aplicaciones increíbles. Tienen un minuto para organizarse."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, un representante de cada equipo pase al frente a recoger las Magic Tablets. Asegúrense de que todos tengan su herramienta de trabajo lista. Tienen un minuto para esta tarea."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 28 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Implementar el sistema de listado y filtros de propiedades en Bubble.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Título del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de llevar a la práctica lo aprendido. Hoy diseñarán en papel la interfaz y la lógica para que los usuarios de tipo host añadan sus propiedades a la aplicación. ¡Prepárense para aplicar sus habilidades de diseño y lógica en la creación de esta funcionalidad!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 30 "Diseño del Listado y Filtro de Propiedades".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El reto de hoy consiste en diseñar la funcionalidad que permita añadir una propiedad a la app y mostrar únicamente aquellas propiedades disponibles. Primero diseñarán la interfaz de usuario en papel, incluyendo el formulario para añadir información, las etiquetas, los inputs y el botón para completar el proceso. También diseñarán cómo se mostrará la lista de propiedades y cómo se aplicarán los filtros para mostrar únicamente los alojamientos disponibles. Recuerden que este diseño será fundamental para guiar la implementación en Bubble. Tienen 10 minutos para completar este diseño."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 31 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Compartir Diseños".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, reúnanse con el equipo más cercano y compartan sus diseños. Expliquen por qué eligieron esa distribución de elementos, qué elementos consideraron clave y cómo están implementando el filtro de disponibilidad. ¡Compartir diferentes perspectivas enriquece nuestro trabajo!"</td>
+            </tr>
+             <tr>
+                 <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 33 "Cronómetro - 1.5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Revisión de Objetivos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos lo que hemos logrado el día de hoy. Hemos aprendido a diseñar la interfaz para que los hosts añadan propiedades y a configurar los filtros necesarios para mostrar solo las propiedades disponibles. ¡Hemos dado un gran paso hacia una app de alojamiento funcional!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 35 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Hoy demostraron una vez más su capacidad para aplicar sus conocimientos en la planificación de nuevas funcionalidades. Su esfuerzo y dedicación merecen un reconocimiento especial. ¡You've Got Mon-e por su increíble trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Premiar la atención con una pregunta sobre un dato curioso.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Pregunta Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento del Easter Egg. Para recompensar su atención, les haré una pregunta relacionada con algo que mencioné en el Brain Gym. Los tres primeros en levantar la mano tendrán la oportunidad de responder en voz baja y ganar Mon-e."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Pregunta del Dato Curioso".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué herramienta les mostré en la Innovación del Día que permite organizar información de manera flexible y similar a una hoja de cálculo? ¡Levanten la mano si saben la respuesta!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 38 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Voy a escuchar las respuestas. Tú primero, ven y dime tu respuesta al oído. Ahora tú, segundo, ¿qué opinas? Y finalmente tú, tercero. ¡La respuesta correcta es Airtable! Felicidades a los ganadores, han demostrado su atención y se llevan Mon-e por su excelente trabajo. ¡Muy bien, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+         <div class="subtitle">Cierre de la sesión, dejando el espacio de trabajo en orden.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 39 "Honor de Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar nuestro espacio de trabajo. Asegúrense de devolver las Magic Tablets, recoger cualquier material y dejar todo limpio y ordenado. Mantener el Dojo en orden es muestra de nuestro respeto. ¡Gracias por su colaboración!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
